@@ -15,4 +15,6 @@ cd {PROJECT}
 composer install
 
 # PHP Run Server
+# http://localhost:8888
+php -S localhost:8888
 ```
