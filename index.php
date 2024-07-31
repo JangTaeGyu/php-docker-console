@@ -8,5 +8,8 @@ $dockerContainerManager = new DockerContainerManager();
 $containers = $dockerContainerManager->fetch();
 
 foreach ($containers as $container) {
-    dump($container);
+//    dump($container);
 }
+?>
+
+<?= view('top') ?>

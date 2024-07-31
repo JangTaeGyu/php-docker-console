@@ -17,20 +17,6 @@ class DockerContainer
     private string $state;
     private string $status;
 
-    /**
-     * @param string $id
-     * @param string $image
-     * @param string $name
-     * @param string $command
-     * @param string $networks
-     * @param string $mounts
-     * @param string $ports
-     * @param string $createdAt
-     * @param string $runningFor
-     * @param string $size
-     * @param string $state
-     * @param string $status
-     */
     public function __construct(
         string $id,
         string $image,
