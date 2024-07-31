@@ -2,6 +2,8 @@
 
 namespace App\Docker\Data;
 
+use DateTime;
+
 class DockerContainer
 {
     private string $id;
@@ -11,7 +13,7 @@ class DockerContainer
     private string $networks;
     private string $mounts;
     private string $ports;
-    private string $createdAt;
+    private DateTime $createdAt;
     private string $runningFor;
     private string $size;
     private string $state;
@@ -38,7 +40,7 @@ class DockerContainer
         $this->networks = $networks;
         $this->mounts = $mounts;
         $this->ports = $ports;
-        $this->createdAt = $createdAt;
+        $this->createdAt = DateTime::createFromFormat('Y-m-d H:i:s O T', $createdAt);
         $this->runningFor = $runningFor;
         $this->size = $size;
         $this->state = $state;
@@ -80,7 +82,7 @@ class DockerContainer
         return $this->ports;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
