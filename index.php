@@ -26,7 +26,7 @@ dump($containers);
             </thead>
             <tbody>
             <?php foreach ($containers as $container): ?>
-                <tr>
+                <tr class="<?= $container->getState() === 'exited' ? 'table-secondary' : '' ?>">
                     <td><?= $container->getId() ?></td>
                     <td><?= $container->getName() ?></td>
                     <td><?= $container->getRunningFor() ?></td>
