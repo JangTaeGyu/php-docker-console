@@ -16,7 +16,7 @@ class DockerContainer
     private DateTime $createdAt;
     private string $runningFor;
     private string $size;
-    private string $state;
+    private ContainerState $state;
     private string $status;
 
     public function __construct(
@@ -43,7 +43,7 @@ class DockerContainer
         $this->createdAt = DateTime::createFromFormat('Y-m-d H:i:s O T', $createdAt);
         $this->runningFor = $runningFor;
         $this->size = $size;
-        $this->state = $state;
+        $this->state = ContainerState::from($state);
         $this->status = $status;
     }
 
@@ -97,7 +97,7 @@ class DockerContainer
         return $this->size;
     }
 
-    public function getState(): string
+    public function getState(): ContainerState
     {
         return $this->state;
     }

@@ -22,17 +22,20 @@ dump($containers);
                 <th scope="col">Size</th>
                 <th scope="col">Created At</th>
                 <th scope="col">Status</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($containers as $container): ?>
-                <tr class="<?= $container->getState() === 'exited' ? 'table-secondary' : '' ?>">
+                <tr class="<?= $container->getState()->isExited() ? 'table-secondary' : '' ?>">
                     <td><?= $container->getId() ?></td>
                     <td><?= $container->getName() ?></td>
                     <td><?= $container->getRunningFor() ?></td>
                     <td><?= $container->getSize() ?></td>
                     <td><?= $container->getCreatedAt()->format('Y-m-d H:i:s') ?></td>
                     <td><?= $container->getStatus() ?></td>
+                    <td>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
