@@ -68,4 +68,5 @@ dump($containers);
             changeState(containerId, '<?= ContainerState::Exited->value ?>')
         }
     </script>
+
 <?= view('bottom') ?>
