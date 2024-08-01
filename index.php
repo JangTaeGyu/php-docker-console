@@ -2,6 +2,7 @@
 
 require_once "vendor/autoload.php";
 
+use App\Docker\Data\ContainerState;
 use App\Docker\DockerContainerManager;
 
 $dockerContainerManager = new DockerContainerManager();
@@ -32,9 +33,21 @@ dump($containers);
                     <td><?= $container->getName() ?></td>
                     <td><?= $container->getRunningFor() ?></td>
                     <td><?= $container->getSize() ?></td>
-                    <td><?= $container->getCreatedAt()->format('Y-m-d H:i:s') ?></td>
+                    <td>
+                        <?= $container->getCreatedAt()->format('Y-m-d') ?>
+                        <small class="d-block"><?= $container->getCreatedAt()->format('H:i:s') ?></small>
+                    </td>
                     <td><?= $container->getStatus() ?></td>
                     <td>
+                        <?php if ($container->getState()->isExited()): ?>
+                            <button class="btn btn-sm btn-primary" onclick="onStart('<?= $container->getId() ?>')">
+                                Start
+                            </button>
+                        <?php else: ?>
+                            <button class="btn btn-sm btn-danger" onclick="onStop('<?= $container->getId() ?>')">
+                                Stop
+                            </button>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -42,4 +55,17 @@ dump($containers);
         </table>
     </main>
 
+    <script type="text/javascript">
+        function changeState(containerId, toState) {
+            console.log(containerId, toState)
+        }
+
+        function onStart(containerId) {
+            changeState(containerId, '<?= ContainerState::Running->value ?>')
+        }
+
+        function onStop(containerId) {
+            changeState(containerId, '<?= ContainerState::Exited->value ?>')
+        }
+    </script>
 <?= view('bottom') ?>
