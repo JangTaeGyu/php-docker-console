@@ -66,7 +66,6 @@ dump($containers);
             form['containerId'].value = containerId;
             form['containerState'].value = toState;
             form.submit();
-            changeContainerStateRequest
         }
 
         function onStart(containerId) {

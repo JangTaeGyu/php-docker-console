@@ -6,9 +6,13 @@ use App\Docker\Request\ChangeContainerStateRequest;
 
 require_once "../../vendor/autoload.php";
 
+$result = ['target' => '/'];
+
 try {
     $dockerContainerManager = new DockerContainerManager();
     $dockerContainerManager->changeState(new ChangeContainerStateRequest($_REQUEST));
 } catch (DockerException $e) {
-    echo $e->getMessage();
+    $result = array_merge($result, ['message' => $e->getMessage()]);
 }
+
+echo view('targetLink', $result);

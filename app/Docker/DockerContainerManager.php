@@ -9,8 +9,8 @@ use App\Docker\Request\ChangeContainerStateRequest;
 class DockerContainerManager
 {
     const string DOCKER_CONTAINER_FETCH_COMMAND = 'docker ps -a --format "{{json .}}"';
-    const string DOCKER_CONTAINER_START_COMMAND = 'dockera start %s';
-    const string DOCKER_CONTAINER_STOP_COMMAND = 'dockera stop %s';
+    const string DOCKER_CONTAINER_START_COMMAND = 'docker start %s';
+    const string DOCKER_CONTAINER_STOP_COMMAND = 'docker stop %s';
 
     /**
      * @return DockerContainer[]
