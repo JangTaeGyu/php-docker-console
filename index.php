@@ -55,9 +55,18 @@ dump($containers);
         </table>
     </main>
 
+    <form name="form" method="post" action="/docker/containers/changeState.php">
+        <input type="hidden" name="containerId">
+        <input type="hidden" name="containerState">
+    </form>
+
     <script type="text/javascript">
         function changeState(containerId, toState) {
-            console.log(containerId, toState)
+            const form = document.forms['form'];
+            form['containerId'].value = containerId;
+            form['containerState'].value = toState;
+            form.submit();
+            changeContainerStateRequest
         }
 
         function onStart(containerId) {
